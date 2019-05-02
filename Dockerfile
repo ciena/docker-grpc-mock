@@ -1,4 +1,4 @@
-FROM node:8.16-jessie
+FROM node:8.16-alpine
 MAINTAINER Ciena Corporation
 
 ENV NODE_PATH=/usr/local/lib/node_modules
