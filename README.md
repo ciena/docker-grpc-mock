@@ -23,7 +23,7 @@ following command:
 ```bash
 grpcurl -proto $(pwd)/example/greeter.proto \
   -plaintext \
-  -d '{"message": "test"}' \
+  -d '{"message": "Hello"}' \
   localhost:50051 greeter.Greeter/Hello
 ```
 
