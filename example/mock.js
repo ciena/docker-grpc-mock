@@ -4,7 +4,8 @@ const mockServer = createMockServer({
   packageName: "greeter",
   serviceName: "Greeter",
   rules: [
-    { method: "hello", input: { message: "test" }, output: { message: "Hello" } },
+    { method: "hello", input: { message: "Hello" }, output: { message: "Hello" } },
+    { method: "hello", input: { message: "Hi" }, output: { message: "A little familar, are't you" } },
     { method: "goodbye", input: ".*", output: { message: "Goodbye" } },
     
     {
@@ -16,6 +17,16 @@ const mockServer = createMockServer({
       ],
       output: { message: "I'm fine, thank you" }
     },
+
+    {
+      method: "howAreYou",
+      streamType: "client",
+      stream: [
+        { input: { message: "Hello" } },
+        { input: { message: "Do you think it will rain?" } },
+      ],
+      output: { message: "It does look a bit cloudy" }
+    },
     
     {
       method: "niceToMeetYou",
@@ -26,6 +37,16 @@ const mockServer = createMockServer({
       ],
       input: { message: "Hi. I'm John. Nice to meet you" }
     },
+
+    {
+      method: "niceToMeetYou",
+      streamType: "server",
+      stream: [
+        { output: { message: "Hi, I'm Sana" } },
+        { output: { message: "Have you met John?" } },
+      ],
+      input: { message: "Hi. I'm Frank" }
+    },
     
     {
       method: "chat",
@@ -33,6 +54,15 @@ const mockServer = createMockServer({
       stream: [
         { input: { message: "Hi" }, output: { message: "Hi there" } },
         { input: { message: "How are you?" }, output: { message: "I'm fine, thank you." } },
+      ]
+    },
+
+    {
+      method: "chat",
+      streamType: "mutual",
+      stream: [
+        { input: { message: "Hello" }, output: { message: "G'day" } },
+        { input: { message: "What are you doing today?" }, output: { message: "Chatting with you" } },
       ]
     },
     

@@ -22,9 +22,18 @@ The utility `grpcurl` can be used to test the mock server using the
 following command:
 ```bash
 grpcurl -proto $(pwd)/example/greeter.proto \
-  -plaintext  \
+  -plaintext \
   -d '{"message": "test"}' \
   localhost:50051 greeter.Greeter/Hello
+```
+
+## Other Examples
+In the `example` directory there is input samples for the streaming requests to use these files
+you can issue commands similar to the following (substituting the appropriate input file and
+method name):
+```bash
+cat example/chat-1.json | grpcurl -proto $(pwd)/example/greeter.proto \
+  -plaintext -d @ localhost:50051 greeter.Greeter/Chat
 ```
 
 ## Useful Environment Variables
